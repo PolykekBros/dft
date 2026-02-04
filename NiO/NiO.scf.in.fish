@@ -35,7 +35,7 @@ function run_pw
 &ELECTRONS
     mixing_beta = 0.3
     conv_thr    = 1d-10
-    electron_maxstep = 200
+    electron_maxstep = 1000
 /
 ATOMIC_SPECIES
 Ni  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
