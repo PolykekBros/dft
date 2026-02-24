@@ -1,5 +1,5 @@
 
-     Program DOS v.7.5 starts on 24Feb2026 at 22:28: 1 
+     Program DOS v.7.5 starts on 24Feb2026 at 22:17:29 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -19,7 +19,8 @@
 
      Reading xml data from directory:
 
-     /Users/kirill/Documents/dft/volume/NiO_dos/out/NiO.save/
+     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/
+     file Ni.pbesol-n-rrkjus_psl.0.1.UPF: wavefunction(s)  3D renormalized
      file Ni.pbesol-n-rrkjus_psl.0.1.UPF: wavefunction(s)  3D renormalized
 
      IMPORTANT: XC functional enforced from input :
@@ -42,10 +43,10 @@
      Tetrahedra used
 
 
-     DOS          :      8.93s CPU      9.01s WALL
+     DOS          :     17.36s CPU     17.49s WALL
 
 
-   This run was terminated on:  22:28:10  24Feb2026            
+   This run was terminated on:  22:17:47  24Feb2026            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

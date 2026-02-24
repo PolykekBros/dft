@@ -12,8 +12,8 @@ run_scf() {
     local ecutwfc=$1
     # Bash requires explicit arithmetic syntax for math
     local ecutrho=$(($ecutwfc * 10))
-    local INPUT_FILE="NiO.scf.in"
-    local OUTPUT_FILE="NiO.scf.out"
+    local INPUT_FILE="NiO.scf_dft_U.in"
+    local OUTPUT_FILE="NiO.scf_dft_U.out"
 
     echo "Started scf calculation"
 
@@ -29,8 +29,12 @@ run_scf() {
 &SYSTEM
     ibrav = 2
     celldm(1) = 7.837
-    nat   = 2
-    ntyp  = 2
+    nat   = 4
+    ntyp  = 3
+    nspin = 2
+    starting_magnetization(1) =  0.5
+    starting_magnetization(2) = -0.5
+    tot_magnetization = 0.0
     ecutwfc = $ecutwfc
     ecutrho = $ecutrho
     nbnd = 36,
@@ -40,12 +44,15 @@ run_scf() {
     conv_thr    = 1d-9
 /
 ATOMIC_SPECIES
-Ni  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
+Ni1  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
+Ni2  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
 O   15.999   O.pbesol-n-rrkjus_psl.1.0.0.UPF
 
 ATOMIC_POSITIONS (alat)
-Ni  0.00000000  0.00000000  0.00000000 0 0 0
-O   0.50000000  0.50000000  0.50000000 0 0 0
+ Ni1  0.0  0.0  0.0 0 0 0
+ Ni2  0.5  0.5  0.5 0 0 0
+ O    0.25 0.25 0.25 0 0 0
+ O    0.75 0.75 0.75 0 0 0 
 
 K_POINTS automatic
 4 4 4 0 0 0
@@ -60,8 +67,8 @@ run_nscf() {
     local ecutwfc=$1
     # Bash requires explicit arithmetic syntax for math
     local ecutrho=$(($ecutwfc * 10))
-    local INPUT_FILE="NiO.nscf.in"
-    local OUTPUT_FILE="NiO.nscf.out"
+    local INPUT_FILE="NiO.nscf_dft_U.in"
+    local OUTPUT_FILE="NiO.nscf_dft_U.out"
 
     echo "Started nscf calculation"
 
@@ -77,8 +84,12 @@ run_nscf() {
 &SYSTEM
     ibrav = 2
     celldm(1) = 7.837
-    nat   = 2
-    ntyp  = 2
+    nat   = 4
+    ntyp  = 3
+    nspin = 2
+    starting_magnetization(1) =  0.5
+    starting_magnetization(2) = -0.5
+    tot_magnetization = 0.0
     ecutwfc = $ecutwfc
     ecutrho = $ecutrho
     nbnd = 36,
@@ -89,12 +100,15 @@ run_nscf() {
     conv_thr    = 1d-9
 /
 ATOMIC_SPECIES
-Ni  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
+Ni1  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
+Ni2  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
 O   15.999   O.pbesol-n-rrkjus_psl.1.0.0.UPF
 
 ATOMIC_POSITIONS (alat)
-Ni  0.00000000  0.00000000  0.00000000 0 0 0
-O   0.50000000  0.50000000  0.50000000 0 0 0
+ Ni1  0.0  0.0  0.0 0 0 0
+ Ni2  0.5  0.5  0.5 0 0 0
+ O    0.25 0.25 0.25 0 0 0
+ O    0.75 0.75 0.75 0 0 0 
 
 K_POINTS automatic
 12 12 12 0 0 0
@@ -106,8 +120,8 @@ EOF
 }
 
 run_dos() {
-    local INPUT_FILE="NiO.dos.in"
-    local OUTPUT_FILE="NiO.dos.out"
+    local INPUT_FILE="NiO.dos_dft_U.in"
+    local OUTPUT_FILE="NiO.dos_dft_U.out"
 
     echo "Started dos calculation"
 
@@ -116,7 +130,7 @@ run_dos() {
     &DOS
     prefix='NiO'
     outdir='$OUTPUT_DIR'
-    fildos='nio.dos.dat'
+    fildos='nio.dos_dft_U.dat'
     emin=-10
     emax=20
 /
@@ -147,7 +161,7 @@ set ylabel "DOS"
 #set key 0.01,100
 #set xr [0.0:0.022]
 #set yr [0:325]
-plot    "nio.dos.dat" using 1:2 title 'DOS' with linespoints
+plot    "nio.dos_dft_U.dat" using 1:2 title 'DOS' with linespoints
 pause -1 "Hit any key to continue\n"    #so that the code doesn't exit automatically
 EOF
 

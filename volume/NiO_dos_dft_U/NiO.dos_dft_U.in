@@ -1,0 +1,7 @@
+    &DOS
+    prefix='NiO'
+    outdir='/Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out'
+    fildos='nio.dos_dft_U.dat'
+    emin=-10
+    emax=20
+/
