@@ -35,8 +35,8 @@ run_vc_relax() {
     nat   = 4
     ntyp  = 3
     nspin = 2
-    starting_magnetization(1) =  0.5
-    starting_magnetization(2) = -0.5
+    starting_magnetization(1) =  0.2
+    starting_magnetization(2) = -0.2
     tot_magnetization = 0.0
     ecutwfc = $ecutwfc
     ecutrho = $ecutrho
