@@ -149,7 +149,7 @@ run_plotter() {
     echo "Plotting calculation results"
 
     # Using cat heredoc to generate the file content
-    cat <<EOF >$INPUT_FILE
+    cat <<'EOF' >$INPUT_FILE
 set   autoscale                        # scale axes automatically
 unset log                              # remove any log-scaling
 unset label                            # remove any previous labels

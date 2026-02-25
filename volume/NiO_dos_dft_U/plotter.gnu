@@ -9,5 +9,6 @@ set ylabel "DOS"
 set arrow 1 from 15.691,-2.5 to 15.691,2.5 nohead ls 10 dt 2
 #set xr [5:25]
 #set yr [0:325]
-plot    "nio.dos_dft_U.dat" using 1:2 title 'DOS of spin-up' with line,	"nio.dos_dft_U.dat" using 1:(-$3) title 'DOS of spin-down' with line
+plot    "nio.dos_dft_U.dat" using 1:2 title 'DOS of spin-up' with line,\
+	"nio.dos_dft_U.dat" using 1:(-$3) title 'DOS of spin-down' with line
 pause -1 "Hit any key to continue\n"    #so that the code doesn't exit automatically
