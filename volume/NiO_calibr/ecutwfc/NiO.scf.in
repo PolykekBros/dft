@@ -1,0 +1,47 @@
+&CONTROL
+    calculation = 'scf'
+    prefix      = 'NiO'
+    restart_mode = 'from_scratch'
+    outdir      = '/Users/kirill/Documents/dft/volume/NiO_calibr/ecutwfc/out'
+    pseudo_dir  = '/Users/kirill/Documents/dft/volume/NiO_calibr/ecutwfc/../../../pot'
+    tprnfor     = .true.
+/
+&SYSTEM
+    ibrav = 2
+    celldm(1) = 7.837
+    nat   = 4
+    ntyp  = 3
+    nspin = 2
+    starting_magnetization(1) =  0.5
+    starting_magnetization(2) = -0.5
+    tot_magnetization = 0.0
+    ecutwfc = 70
+    ecutrho = 700
+    nbnd = 32
+/
+&ELECTRONS
+    mixing_beta = 0.3
+    conv_thr    = 1d-9
+/
+&IONS
+/
+&CELL
+    cell_dofree='ibrav'
+/
+ATOMIC_SPECIES
+Ni1  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
+Ni2  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
+O   15.999   O.pbesol-n-rrkjus_psl.1.0.0.UPF
+
+ATOMIC_POSITIONS (alat)
+ Ni1  0.0  0.0  0.0 0 0 0
+ Ni2  0.5  0.5  0.5 0 0 0
+ O    0.25 0.25 0.25 0 0 0
+ O    0.75 0.75 0.75 0 0 0 
+
+K_POINTS automatic
+4 4 4 0 0 0
+
+HUBBARD (ortho-atomic)
+U Ni1-3d 4.6
+U Ni2-3d 4.6

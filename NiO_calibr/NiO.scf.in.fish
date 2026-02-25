@@ -87,14 +87,16 @@ end
 
 # Gnuplot to visualize results
 echo "Generating convergence plot..."
-echo "
+
+cat <<EOF | gnuplot
 set terminal pngcairo enhanced font 'Verdana,10'
 set output 'convergence.png'
 set title 'Total Energy Convergence vs. ecutwfc'
 set xlabel 'ecutwfc (Ry)'
 set ylabel 'Total Energy (Ry)'
 set grid
-set format y \"%.4f\"
+set format y "%.4f"
 plot 'NiO.scf.data' with linespoints title 'Converged Energy'
-" | gnuplot
+EOF
+
 echo "Plot saved to convergence.png"

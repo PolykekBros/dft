@@ -58,6 +58,10 @@ ATOMIC_POSITIONS (alat)
 
 K_POINTS automatic
 4 4 4 0 0 0
+
+HUBBARD (ortho-atomic)
+U Ni1-3d 4.6
+U Ni2-3d 4.6
 EOF
 
     rm -f $OUTPUT_FILE
@@ -114,6 +118,10 @@ ATOMIC_POSITIONS (alat)
 
 K_POINTS automatic
 12 12 12 0 0 0
+
+HUBBARD (ortho-atomic)
+U Ni1-3d 4.6
+U Ni2-3d 4.6
 EOF
 
     rm -f $OUTPUT_FILE
