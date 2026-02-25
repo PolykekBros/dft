@@ -11,9 +11,6 @@ echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
 
 run_vc_relax() {
-    local ecutwfc=$1
-    # Bash requires explicit arithmetic syntax for math
-    local ecutrho=$(($ecutwfc * 10))
     local INPUT_FILE="NiO.vc_relax.in"
     local OUTPUT_FILE="NiO.vc_relax.out"
 
@@ -31,12 +28,12 @@ run_vc_relax() {
 /
 &SYSTEM
     ibrav = 2
-    celldm(1) = 8.2
+    celldm(1) = 7.9
     nat   = 2
     ntyp  = 2
     nspin = 1
-    ecutwfc = $ecutwfc
-    ecutrho = $ecutrho
+    ecutwfc = 55
+    ecutrho = 550
 /
 &ELECTRONS
     mixing_beta = 0.3
@@ -65,4 +62,15 @@ EOF
     mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
 }
 
-run_vc_relax 55
+run_vc_relax 
+
+> NiO_structural.data
+
+DENSITY=$(grep "density =" NiO.vc_relax.out | tail -n 1 | awk '{print $3}')
+ALAT_VAL=$(grep "CELL_PARAMETERS (alat=" NiO.vc_relax.out | tail -n 1 | tr -d ')' | awk -F'=' '{print $2}')
+RAW_PARAM=$(grep -A 1 "CELL_PARAMETERS (alat=" NiO.vc_relax.out | tail -n 1 | awk '{print $1}')
+CALC_PARAM_B=$(echo "scale=6; $RAW_PARAM / -0.5 * $ALAT_VAL" | bc -l)
+CALC_PARAM_A=$(echo "scale=6; $CALC_PARAM_B * 0.529177" | bc -l)
+
+echo "Density=$DENSITY | Calc_Param=$CALC_PARAM_A"
+echo -e  "Density: $DENSITY\nLattice param (Bohr): $CALC_PARAM_B\nLattice param (Angstrom): $CALC_PARAM_A" >> NiO_structural.data

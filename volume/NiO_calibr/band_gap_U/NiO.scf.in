@@ -8,7 +8,7 @@
 /
 &SYSTEM
     ibrav = 2
-    celldm(1) = 7.837
+    celldm(1) = 7.83687900
     nat   = 4
     ntyp  = 3
     nspin = 2
@@ -43,6 +43,5 @@ K_POINTS automatic
 4 4 4 0 0 0
 
 HUBBARD (ortho-atomic)
-U Ni1-3d 4.6
-U Ni2-3d 4.6
-U O-2p 6
+U Ni1-3d 8
+U Ni2-3d 8

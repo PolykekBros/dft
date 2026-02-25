@@ -28,7 +28,7 @@ run_pw() {
 /
 &SYSTEM
     ibrav = 2
-    celldm(1) = 7.837
+    celldm(1) = 7.83687900
     nat   = 4
     ntyp  = 3
     nspin = 2
@@ -63,9 +63,8 @@ K_POINTS automatic
 4 4 4 0 0 0
 
 HUBBARD (ortho-atomic)
-U Ni1-3d 4.6
-U Ni2-3d 4.6
-U O-2p $u_val
+U Ni1-3d $u_val
+U Ni2-3d $u_val
 EOF
 
     rm -f $OUTPUT_FILE
@@ -75,7 +74,7 @@ EOF
 
 > NiO_gap.data
 
-for u in $(seq 1.0 0.25 6.0); do
+for u in $(seq 3.0 0.25 8.0); do
     echo "Processing Hubbard U = $u"
     
     run_pw "$u"
