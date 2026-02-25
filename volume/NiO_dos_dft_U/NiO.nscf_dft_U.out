@@ -1,5 +1,5 @@
 
-     Program PWSCF v.7.5 starts on 25Feb2026 at 13:35:13 
+     Program PWSCF v.7.5 starts on 25Feb2026 at 20:36: 2 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -55,6 +55,14 @@
      charge density cutoff     =     550.0000  Ry
      Exchange-correlation= PBESOL
                            (   1   4  10   8   0   0   0)
+     Hubbard projectors: ortho-atomic
+     Hubbard parameters of DFT+U (Dudarev formulation) in eV:
+     U(Ni1-3d) =  4.6000
+     U(Ni2-3d) =  4.6000
+
+     Internal variables: lda_plus_u =T, lda_plus_u_kind = 0
+
+     Internal variables: orbital_resolved =F, hub_pot_fix =F, apply_U = F
 
      celldm(1)=   7.837000  celldm(2)=   0.000000  celldm(3)=   0.000000
      celldm(4)=   0.000000  celldm(5)=   0.000000  celldm(6)=   0.000000
@@ -215,9 +223,9 @@
 
      Smooth grid:     6615 G-vectors     FFT dimensions: (  27,  27,  27)
 
-     Estimated max dynamical RAM per process >      24.01 MB
+     Estimated max dynamical RAM per process >      24.03 MB
 
-     Estimated total dynamical RAM >     120.04 MB
+     Estimated total dynamical RAM >     120.17 MB
      Generating pointlists ...
      new r_m :   0.1786 (alat units)  1.3998 (a.u.) for type    1
      new r_m :   0.1786 (alat units)  1.3998 (a.u.) for type    2
@@ -226,68 +234,149 @@
      The potential is recalculated from file :
      /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/charge-density
 
+
+     STARTING HUBBARD OCCUPATIONS:
+
+     =================== HUBBARD OCCUPATIONS ===================
+     ------------------------ ATOM    1 ------------------------
+     Tr[ns(  1)] (up, down, total) =   4.60810  4.04456  8.65266
+     Atomic magnetic moment for atom   1 =   0.56354
+     SPIN  1
+     eigenvalues:
+       0.888  0.888  0.888  0.972  0.972
+     eigenvectors (columns):
+      -0.000  0.000 -0.000 -0.628  0.778
+      -0.270 -0.301 -0.915 -0.000 -0.000
+      -0.634 -0.660  0.404 -0.000 -0.000
+       0.000 -0.000  0.000 -0.778 -0.628
+       0.725 -0.688  0.012  0.000  0.000
+     occupation matrix ns (before diag.):
+       0.972 -0.000 -0.000 -0.000  0.000
+      -0.000  0.888 -0.000  0.000  0.000
+      -0.000 -0.000  0.888  0.000  0.000
+      -0.000  0.000  0.000  0.972 -0.000
+       0.000  0.000  0.000 -0.000  0.888
+     SPIN  2
+     eigenvalues:
+       0.709  0.709  0.709  0.959  0.959
+     eigenvectors (columns):
+      -0.000 -0.000  0.000 -0.596  0.803
+      -0.268 -0.963  0.039 -0.000 -0.000
+      -0.587  0.131 -0.799 -0.000 -0.000
+       0.000  0.000 -0.000 -0.803 -0.596
+       0.764 -0.237 -0.600  0.000  0.000
+     occupation matrix ns (before diag.):
+       0.959 -0.000 -0.000 -0.000  0.000
+      -0.000  0.709 -0.000  0.000  0.000
+      -0.000 -0.000  0.709  0.000  0.000
+      -0.000  0.000  0.000  0.959 -0.000
+       0.000  0.000  0.000 -0.000  0.709
+     ------------------------ ATOM    2 ------------------------
+     Tr[ns(  2)] (up, down, total) =   4.04456  4.60810  8.65265
+     Atomic magnetic moment for atom   2 =  -0.56354
+     SPIN  1
+     eigenvalues:
+       0.709  0.709  0.709  0.959  0.959
+     eigenvectors (columns):
+      -0.000  0.000 -0.000  0.093 -0.996
+      -0.254 -0.606 -0.754  0.000  0.000
+      -0.577 -0.531  0.621  0.000  0.000
+       0.000  0.000  0.000  0.996  0.093
+       0.776 -0.593  0.215 -0.000 -0.000
+     occupation matrix ns (before diag.):
+       0.959 -0.000 -0.000 -0.000  0.000
+      -0.000  0.709 -0.000  0.000  0.000
+      -0.000 -0.000  0.709  0.000  0.000
+      -0.000  0.000  0.000  0.959 -0.000
+       0.000  0.000  0.000 -0.000  0.709
+     SPIN  2
+     eigenvalues:
+       0.888  0.888  0.888  0.972  0.972
+     eigenvectors (columns):
+      -0.000 -0.000  0.000 -0.330  0.944
+      -0.295 -0.932  0.209 -0.000 -0.000
+      -0.597  0.009 -0.802 -0.000 -0.000
+       0.000  0.000 -0.000 -0.944 -0.330
+       0.746 -0.361 -0.559  0.000  0.000
+     occupation matrix ns (before diag.):
+       0.972 -0.000 -0.000 -0.000  0.000
+      -0.000  0.888 -0.000  0.000  0.000
+      -0.000 -0.000  0.888  0.000  0.000
+      -0.000  0.000  0.000  0.972 -0.000
+       0.000  0.000  0.000 -0.000  0.888
+
+     Number of occupied Hubbard levels =   17.3053
+
+     Atomic wfc used for Hubbard projectors are orthogonalized
+
      Starting wfcs are   26 randomized atomic wfcs +    6 random wfcs
 
      Band Structure Calculation
      Davidson diagonalization with overlap
+     c_bands:  1 eigenvalues not converged
+     c_bands:  1 eigenvalues not converged
 
-     ethr =  3.13E-12,  avg # of iterations = 64.6
+     ethr =  3.13E-12,  avg # of iterations = 64.5
 
-     total cpu time spent up to now is       29.1 secs
+     total cpu time spent up to now is       30.7 secs
 
      End of band structure calculation
 
      Number of k-points >= 100: set verbosity='high' to print the bands.
 
-     the spin up/dw Fermi energies are    30.0284   30.0284 ev
-     (compare with:    32.1987   32.1987 eV, computed in scf)
+     the spin up/dw Fermi energies are    29.5084   29.5084 ev
+     (compare with:    31.6945   31.6945 eV, computed in scf)
 
      Writing all to output data dir /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/ :
      XML data file, pseudopotentials, collected wavefunctions
 
-     init_run     :      0.18s CPU      0.18s WALL (       1 calls)
-     electrons    :     28.30s CPU     28.75s WALL (       1 calls)
+     init_run     :      0.28s CPU      0.29s WALL (       1 calls)
+     electrons    :     29.68s CPU     30.23s WALL (       1 calls)
 
      Called by init_run:
-     wfcinit      :      0.00s CPU      0.00s WALL (       1 calls)
-     potinit      :      0.02s CPU      0.02s WALL (       1 calls)
-     hinit0       :      0.13s CPU      0.13s WALL (       1 calls)
+     wfcinit      :      0.10s CPU      0.10s WALL (       1 calls)
+     potinit      :      0.01s CPU      0.01s WALL (       1 calls)
+     hinit0       :      0.14s CPU      0.14s WALL (       1 calls)
 
      Called by electrons:
-     c_bands      :     27.82s CPU     28.27s WALL (       1 calls)
-     v_of_rho     :      0.02s CPU      0.02s WALL (       1 calls)
-     newd         :      0.02s CPU      0.02s WALL (       1 calls)
+     c_bands      :     29.17s CPU     29.72s WALL (       1 calls)
+     v_of_rho     :      0.01s CPU      0.01s WALL (       1 calls)
+     newd         :      0.01s CPU      0.02s WALL (       1 calls)
 
      Called by c_bands:
-     init_us_2    :      0.01s CPU      0.01s WALL (     144 calls)
-     cegterg      :     27.31s CPU     27.75s WALL (     524 calls)
+     init_us_2    :      0.01s CPU      0.01s WALL (     288 calls)
+     cegterg      :     28.64s CPU     29.17s WALL (     526 calls)
 
      Called by *egterg:
-     cdiaghg      :      8.63s CPU      8.65s WALL (    9442 calls)
-     h_psi        :     15.92s CPU     16.28s WALL (    9966 calls)
-     s_psi        :      0.32s CPU      0.33s WALL (    9966 calls)
-     g_psi        :      0.04s CPU      0.04s WALL (    9298 calls)
+     cdiaghg      :      9.31s CPU      9.36s WALL (    9430 calls)
+     h_psi        :     16.56s CPU     16.99s WALL (    9956 calls)
+     s_psi        :      0.38s CPU      0.39s WALL (   10244 calls)
+     g_psi        :      0.04s CPU      0.05s WALL (    9286 calls)
 
      Called by h_psi:
-     h_psi:calbec :      0.58s CPU      0.60s WALL (    9966 calls)
-     vloc_psi     :     14.95s CPU     15.28s WALL (    9966 calls)
-                                        0.00s GPU  (    9966 calls)
-     add_vuspsi   :      0.36s CPU      0.37s WALL (    9966 calls)
+     h_psi:calbec :      0.59s CPU      0.61s WALL (    9956 calls)
+     vloc_psi     :     14.95s CPU     15.33s WALL (    9956 calls)
+                                        0.00s GPU  (    9956 calls)
+     add_vuspsi   :      0.39s CPU      0.39s WALL (    9956 calls)
+     vhpsi        :      0.61s CPU      0.63s WALL (    9956 calls)
 
      General routines
-     calbec       :      0.58s CPU      0.59s WALL (    9966 calls)
+     calbec       :      0.95s CPU      0.97s WALL (   20056 calls)
      fft          :      0.01s CPU      0.01s WALL (      23 calls)
      ffts         :      0.00s CPU      0.00s WALL (       2 calls)
-     fftw         :     14.29s CPU     14.57s WALL (  350016 calls)
+     fftw         :     14.25s CPU     14.55s WALL (  350704 calls)
      interpolate  :      0.00s CPU      0.00s WALL (       2 calls)
-     davcio       :      0.00s CPU      0.00s WALL (     288 calls)
+     davcio       :      0.00s CPU      0.01s WALL (     720 calls)
 
      Parallel routines
 
-     PWSCF        :     28.67s CPU     29.19s WALL
+     Hubbard U routines
+     vhpsi        :      0.61s CPU      0.63s WALL (    9956 calls)
+
+     PWSCF        :     30.17s CPU     30.76s WALL
 
 
-   This run was terminated on:  13:35:42  25Feb2026            
+   This run was terminated on:  20:36:33  25Feb2026            
 
 =------------------------------------------------------------------------------=
    JOB DONE.
