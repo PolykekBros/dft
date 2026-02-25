@@ -1,5 +1,5 @@
 
-     Program DOS v.7.5 starts on 24Feb2026 at 22:52:39 
+     Program DOS v.7.5 starts on 25Feb2026 at 12:56:32 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -43,10 +43,10 @@
      Tetrahedra used
 
 
-     DOS          :     17.64s CPU     17.94s WALL
+     DOS          :     15.36s CPU     15.42s WALL
 
 
-   This run was terminated on:  22:52:57  24Feb2026            
+   This run was terminated on:  12:56:47  25Feb2026            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

@@ -16,7 +16,7 @@
     tot_magnetization = 0.0
     ecutwfc = 55
     ecutrho = 550
-    nbnd = 36,
+    nbnd = 32,
     occupations = 'tetrahedra'
 /
 &ELECTRONS

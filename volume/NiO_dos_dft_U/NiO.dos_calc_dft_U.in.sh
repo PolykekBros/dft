@@ -5,6 +5,8 @@ set -xe
 PSEUDO_DIR="$(pwd)/../../pot"
 OUTPUT_DIR="$(pwd)/out"
 
+QE_DIR="$HOME/Desktop/src/q-e-qe-7.5/bin"
+
 echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
 
@@ -37,7 +39,7 @@ run_scf() {
     tot_magnetization = 0.0
     ecutwfc = $ecutwfc
     ecutrho = $ecutrho
-    nbnd = 36,
+    nbnd = 32,
 /
 &ELECTRONS
     mixing_beta = 0.3
@@ -60,7 +62,7 @@ EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 ~/Desktop/src/q-e-qe-7.5/bin/pw.x -inp $INPUT_FILE >$OUTPUT_FILE
+    mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
 }
 
 run_nscf() {
@@ -92,7 +94,7 @@ run_nscf() {
     tot_magnetization = 0.0
     ecutwfc = $ecutwfc
     ecutrho = $ecutrho
-    nbnd = 36,
+    nbnd = 32,
     occupations = 'tetrahedra'
 /
 &ELECTRONS
@@ -116,7 +118,7 @@ EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 ~/Desktop/src/q-e-qe-7.5/bin/pw.x -inp $INPUT_FILE >$OUTPUT_FILE
+    mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
 }
 
 run_dos() {
@@ -138,7 +140,7 @@ EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 ~/Desktop/src/q-e-qe-7.5/bin/dos.x -inp $INPUT_FILE >$OUTPUT_FILE
+    mpirun -np 5 "$QE_DIR/dos.x" -inp $INPUT_FILE > $OUTPUT_FILE
 }
 
 run_plotter() {

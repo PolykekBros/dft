@@ -2,8 +2,10 @@
 
 set -xe
 
-PSEUDO_DIR="$(pwd)/../pot"
+PSEUDO_DIR="$(pwd)/../../pot"
 OUTPUT_DIR="$(pwd)/out"
+
+QE_DIR="$HOME/Desktop/src/q-e-qe-7.5/bin"
 
 echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
@@ -60,7 +62,7 @@ EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 ~/Desktop/src/q-e-qe-7.5/bin/pw.x -inp $INPUT_FILE >$OUTPUT_FILE
+    mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
 }
 
 run_vc_relax 55
