@@ -32,8 +32,8 @@ run_pw() {
     nat   = 4
     ntyp  = 3
     nspin = 2
-    starting_magnetization(1) =  0.2
-    starting_magnetization(2) = -0.2
+    starting_magnetization(1) =  1.5
+    starting_magnetization(2) = -1.5
     tot_magnetization = 0.0
     ecutwfc = 55
     ecutrho = 550
