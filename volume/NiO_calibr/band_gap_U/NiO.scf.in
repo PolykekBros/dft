@@ -13,8 +13,8 @@
     nat   = 4
     ntyp  = 3
     nspin = 2
-    starting_magnetization(1) =  1.5
-    starting_magnetization(2) = -1.5
+    starting_magnetization(1) =  1.0
+    starting_magnetization(2) = -1.0
     tot_magnetization = 0.0
     ecutwfc = 55
     ecutrho = 550
@@ -44,5 +44,5 @@ K_POINTS automatic
 6 6 6 0 0 0
 
 HUBBARD (ortho-atomic)
-U Ni1-3d 5
-U Ni2-3d 5
+U Ni1-3d 8
+U Ni2-3d 8

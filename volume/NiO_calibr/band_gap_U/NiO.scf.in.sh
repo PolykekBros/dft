@@ -33,8 +33,8 @@ run_pw() {
     nat   = 4
     ntyp  = 3
     nspin = 2
-    starting_magnetization(1) =  1.5
-    starting_magnetization(2) = -1.5
+    starting_magnetization(1) =  1.0
+    starting_magnetization(2) = -1.0
     tot_magnetization = 0.0
     ecutwfc = 55
     ecutrho = 550
@@ -75,7 +75,7 @@ EOF
 
 > NiO_gap.data
 
-for u in $(seq 3.0 0.25 8.0); do
+for u in $(seq 3.0 0.5 8.0); do
     echo "Processing Hubbard U = $u"
     
     run_pw "$u"
