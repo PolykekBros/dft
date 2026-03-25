@@ -50,9 +50,9 @@ run_pw() {
     cell_dofree='ibrav'
 /
 ATOMIC_SPECIES
-Ni1  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
-Ni2  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
-O   15.999   O.pbesol-n-rrkjus_psl.1.0.0.UPF
+Ni1  58.6934  Ni.pbesol-spn-rrkjus_psl.1.0.0.UPF
+Ni2  58.6934  Ni.pbesol-spn-rrkjus_psl.1.0.0.UPF
+O   15.999   O.pbesol-n-kjpaw_psl.1.0.0.UPF
 
 ATOMIC_POSITIONS (alat)
  Ni1  0.0  0.0  0.0 0 0 0

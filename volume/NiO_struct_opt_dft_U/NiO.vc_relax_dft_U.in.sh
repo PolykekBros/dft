@@ -27,14 +27,13 @@ run_vc_relax() {
     forc_conv_thr = 1e-4 
 /
 &SYSTEM
-    ibrav = 5
-    celldm(1) = 9.647
-    celldm(4) = 0.83333333
+    ibrav = 2
+    celldm(1) = 7.9
     nat   = 4
     ntyp  = 3
     nspin = 2
-    starting_magnetization(1) =  1.5
-    starting_magnetization(2) = -1.5
+    starting_magnetization(1) =  0.2
+    starting_magnetization(2) = -0.2
     tot_magnetization = 0.0
     ecutwfc = 55
     ecutrho = 550
@@ -51,15 +50,15 @@ run_vc_relax() {
     cell_dynamics='bfgs'
 /
 ATOMIC_SPECIES
- Ni1  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
- Ni2  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
- O    15.999   O.pbesol-n-rrkjus_psl.1.0.0.UPF
+ Ni1  58.6934  Ni.pbesol-n-kjpaw_psl.0.1.UPF
+ Ni2  58.6934  Ni.pbesol-n-kjpaw_psl.0.1.UPF
+ O    15.999   O.pbesol-n-kjpaw_psl.1.0.0.UPF
 
-ATOMIC_POSITIONS (crystal)
-    Ni1  0.0000000000   0.0000000000   0.0000000000
-    Ni2 -0.5000000000   1.5000000000  -0.5000000000
-    O    0.7500000000  -0.2500000000  -0.2500000000
-    O   -0.7500000000   0.2500000000   0.2500000000
+ATOMIC_POSITIONS (alat)
+    Ni1  0.0  0.0  0.0 0 0 0
+    Ni2  0.5  0.5  0.5 0 0 0
+    O    0.25 0.25 0.25 0 0 0
+    O    0.75 0.75 0.75 0 0 0 
 
 K_POINTS (automatic)
 6 6 6 0 0 0
