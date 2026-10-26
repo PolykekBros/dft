@@ -32,13 +32,15 @@ run_pw() {
     celldm(1) = 7.837
     nat   = 4
     ntyp  = 3
-    nspin = 2
-    starting_magnetization(1) =  0.5
-    starting_magnetization(2) = -0.5
-    tot_magnetization = 0.0
+    noncolin = .true.
+    angle1(1) = 0.0
+    angle1(2) = 180.0
+    angle2(1) = 0.0
+    angle2(2) = 0.0
+    lspinorb=.true.
     ecutwfc = $ecutwfc
     ecutrho = $ecutrho
-    nbnd = 32
+    nbnd = 64
 /
 &ELECTRONS
     mixing_beta = 0.3
@@ -50,9 +52,9 @@ run_pw() {
     cell_dofree='ibrav'
 /
 ATOMIC_SPECIES
-Ni1  58.6934  Ni.pbesol-spn-rrkjus_psl.1.0.0.UPF
-Ni2  58.6934  Ni.pbesol-spn-rrkjus_psl.1.0.0.UPF
-O   15.999   O.pbesol-n-kjpaw_psl.1.0.0.UPF
+Ni1  58.6934  Ni.upf
+Ni2  58.6934  Ni.upf
+O   15.999   O.upf
 
 ATOMIC_POSITIONS (alat)
  Ni1  0.0  0.0  0.0 0 0 0

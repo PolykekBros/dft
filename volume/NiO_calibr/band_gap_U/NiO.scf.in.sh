@@ -35,11 +35,14 @@ run_pw() {
     nspin = 4
     noncolin = .true.
     lspinorb = .true.
-    starting_magnetization(1) =  0.2
-    starting_magnetization(2) = -0.2
-    ecutwfc = 55
-    ecutrho = 550
-    nbnd = 40
+    angle1(1) = 0.0
+    angle1(2) = 180.0
+    angle2(1) = 0.0
+    angle2(2) = 0.0
+
+    ecutwfc = 65
+    ecutrho = 650
+    nbnd = 80
 /
 &ELECTRONS
     mixing_beta = 0.3
@@ -51,9 +54,9 @@ run_pw() {
     cell_dofree='ibrav'
 /
 ATOMIC_SPECIES
-Ni1  58.6934  Ni.rel-pbesol-n-rrkjus_psl.0.1.UPF
-Ni2  58.6934  Ni.rel-pbesol-n-rrkjus_psl.0.1.UPF
-O   15.999   O.rel-pbesol-n-rrkjus_psl.1.0.0.UPF
+Ni1  58.6934  Ni.upf
+Ni2  58.6934  Ni.upf
+O   15.999   O.upf
 
 ATOMIC_POSITIONS (crystal)
     Ni1  0.0000000000   0.0000000000   0.0000000000
@@ -76,7 +79,7 @@ EOF
 
 > NiO_gap.data
 
-for u in $(seq 3.0 0.5 8.0); do
+for u in $(seq 6.0 0.5 8.0); do
     echo "Processing Hubbard U = $u"
     
     run_pw "$u"
