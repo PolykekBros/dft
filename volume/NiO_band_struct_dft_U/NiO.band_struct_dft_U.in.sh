@@ -261,8 +261,13 @@ EOF
 
 run_plotter() {
     local INPUT_FILE="plotter.gnu"
+    FERMI_ENERGY=$(grep "the Fermi energy is" NiO.nscf_dft_U.out | awk '{print $5}')
+    echo "Extracted Fermi Energy: $FERMI_ENERGY eV"
+    X_COORDS=($(grep "high-symmetry point" NiO.bands_dft_U.pp.out | awk '{print $NF}'))
+    echo "K-point X-coordinates: ${X_COORDS[@]}"
+
     echo "Plotting band structure"
-    cat <<'EOF' >$INPUT_FILE
+    cat <<EOF >$INPUT_FILE
     set terminal pngcairo enhanced font 'Verdana,12' size 800,600
     set output 'NiO_bands_relativistic.png'
     
@@ -272,21 +277,15 @@ run_plotter() {
     set xzeroaxis ls -1
     set grid y
     
-    # Fermi energy extracted from your NSCF calculation
-    Ef = 17.6181
-    
-    # High-symmetry k-point labels
-    # IMPORTANT: You MUST replace the numeric x-coordinates below with the actual 
-    # cumulative k-path distances printed in your NiO.bands_post.out file!
-    set xtics ("L" 0.0000, "{/Symbol G}" 0.8660, "X" 1.8660, "W" 2.3660, "{/Symbol G}" 3.4270)
+    set xtics ("L" ${X_COORDS[0]}, "{/Symbol G}" ${X_COORDS[1]}, "X" ${X_COORDS[2]}, "W" ${X_COORDS[3]}, "{/Symbol G}" ${X_COORDS[4]})
     
     # Add vertical dashed lines at the high-symmetry points for clarity
-    set arrow from 0.8660, graph 0 to 0.8660, graph 1 nohead lt 0
-    set arrow from 1.8660, graph 0 to 1.8660, graph 1 nohead lt 0
-    set arrow from 2.3660, graph 0 to 2.3660, graph 1 nohead lt 0
+    set arrow from ${X_COORDS[1]}, graph 0 to ${X_COORDS[1]}, graph 1 nohead lt 0
+    set arrow from ${X_COORDS[2]}, graph 0 to ${X_COORDS[2]}, graph 1 nohead lt 0
+    set arrow from ${X_COORDS[3]}, graph 0 to ${X_COORDS[3]}, graph 1 nohead lt 0
     
     # Plotting the pre-formatted GNU output from bands.x
-    plot 'NiO_bands.dat.gnu' using 1:($2 - Ef) with lines lw 1.5 lc rgb 'dark-blue' notitle
+    plot 'NiO_bands.dat.gnu' using 1:(\$2 - ${FERMI_ENERGY}) with lines lw 1.5 lc rgb 'dark-blue' notitle
 EOF
     gnuplot ${INPUT_FILE}
 }

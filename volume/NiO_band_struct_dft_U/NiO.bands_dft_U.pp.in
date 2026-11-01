@@ -1,0 +1,6 @@
+&BANDS
+prefix  = 'NiO'
+outdir  = '/home/iethseph2/kirkar/dft/volume/NiO_band_struct_dft_U/out'
+filband = 'NiO_bands.dat'
+lsym    = .true.
+/
