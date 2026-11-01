@@ -269,7 +269,6 @@ run_projwfc() {
 &PROJWFC
 prefix = 'NiO'
 outdir = '$OUTPUT_DIR'
-pseudo_dir = '$PSEUDO_DIR'
 lsym   = .false.
 /
 EOF
@@ -311,10 +310,10 @@ EOF
     gnuplot ${INPUT_FILE}
 }
 
-run_scf
-run_nscf
-run_bands
-run_bands_pp
-run_projwfc
+# run_scf
+# run_nscf
+# run_bands
+# run_bands_pp
+# run_projwfc
 ./fatband_parser.rs
 run_plotter
