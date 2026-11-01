@@ -237,17 +237,16 @@ run_plotter_projwfc() {
     echo "Plotting localized m_z magnetic moments"
     cat <<'EOF' >$INPUT_FILE
     set terminal pngcairo enhanced font 'Verdana,10' size 800,600
-    set output 'NiO_pdos_mz.png'
+    set output 'NiO_pdos_sz_accurate.png'
     set grid
-    set title "Projected Local Magnetization (m_z) of Ni 3d in NiO"
+    set title "Exact S_z Projected DOS of Ni 3d in Relativistic NiO"
     set xlabel "Energy (eV)"
-    set ylabel "PDOS (States / eV)"
+    set ylabel "Net S_z (States / eV)"
     set format y "%.2f"
     
-    plot "NiO.pdos_atm#1(Ni1)_wfc#4(d_j2.5)" using 1:5 title 'Ni1 3d j=5/2 (m_z)' with line lw 2 lc rgb 'red', \
-         "NiO.pdos_atm#1(Ni1)_wfc#5(d_j1.5)" using 1:5 title 'Ni1 3d j=3/2 (m_z)' with line lw 2 lc rgb 'dark-red', \
-         "NiO.pdos_atm#2(Ni2)_wfc#4(d_j2.5)" using 1:5 title 'Ni2 3d j=5/2 (m_z)' with line lw 2 lc rgb 'blue', \
-         "NiO.pdos_atm#2(Ni2)_wfc#5(d_j1.5)" using 1:5 title 'Ni2 3d j=3/2 (m_z)' with line lw 2 lc rgb 'dark-blue'
+    # Plotting Column 4 (Net Sz) against Column 1 (Energy)
+    plot "Ni1_Sz_projected.dat" using 1:4 title 'Ni1 3d (Net S_z)' with line lw 2 lc rgb 'red', \
+         "Ni2_Sz_projected.dat" using 1:4 title 'Ni2 3d (Net S_z)' with line lw 2 lc rgb 'blue'
 EOF
     gnuplot ${INPUT_FILE}
 }
@@ -256,5 +255,6 @@ run_scf
 run_nscf
 run_dos
 run_projwfc
+./spin_parser.rs
 run_plotter_dos
 run_plotter_projwfc
