@@ -1,5 +1,5 @@
 
-     Program PWSCF v.7.5 starts on 25Feb2026 at 20:36: 2 
+     Program PWSCF v.7.4.1 starts on  1Nov2026 at 19: 8:46 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -10,129 +10,139 @@
      in publications or presentations arising from this work. More details at
      http://www.quantum-espresso.org/quote
 
-     Parallel version (MPI), running on     5 processors
+     Parallel version (MPI & OpenMP), running on      28 processor cores
+     Number of MPI processes:                28
+     Threads/MPI process:                     1
 
      MPI processes distributed on     1 nodes
-     0 MiB available memory on the printing compute node when the environment starts
-
-     Reading input from NiO.nscf_dft_U.in
+     59932 MiB available memory on the printing compute node when the environment starts
+ 
+     Waiting for input...
+     Reading input from standard input
+Warning: card &IONS ignored
+Warning: card / ignored
+Warning: card &CELL ignored
+Warning: card     CELL_DOFREE='IBRAV' ignored
+Warning: card / ignored
 
      Current dimensions of program PWSCF are:
      Max number of different atomic species (ntypx) = 10
      Max number of k-points (npk) =  40000
      Max angular momentum in pseudopotentials (lmaxx) =  4
-     file Ni.pbesol-n-rrkjus_psl.0.1.UPF: wavefunction(s)  3D renormalized
-     file Ni.pbesol-n-rrkjus_psl.0.1.UPF: wavefunction(s)  3D renormalized
 
      Atomic positions and unit cell read from directory:
-     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/
+     /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/out/NiO.save/
+ 
 
-
-     R & G space division:  proc/nbgrp/npool/nimage =       5
+     Fixed quantization axis for GGA:     0.000000    0.000000    1.000000
+ 
+     K-points division:     npool     =       4
+     R & G space division:  proc/nbgrp/npool/nimage =       7
      Subspace diagonalization in iterative solution of the eigenvalue problem:
      a serial algorithm will be used
 
-
+ 
      Parallelization info
      --------------------
      sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
-     Min         231      92     30                 5243     1322     248
-     Max         232      93     31                 5247     1324     251
-     Sum        1159     463    151                26229     6615    1243
-
+     Min         153     153     51                 2514     2514     480
+     Max         154     154     52                 2516     2516     482
+     Sum        1077    1077    359                17603    17603    3363
+ 
      Using Slab Decomposition
+ 
 
 
-
-     bravais-lattice index     =            2
-     lattice parameter (alat)  =       7.8370  a.u.
-     unit-cell volume          =     120.3343 (a.u.)^3
+     bravais-lattice index     =            5
+     lattice parameter (alat)  =       9.7110  a.u.
+     unit-cell volume          =     249.2909 (a.u.)^3
      number of atoms/cell      =            4
      number of atomic types    =            3
-     number of electrons       =        32.00 (up:  16.00, down:  16.00)
-     number of Kohn-Sham states=           32
-     kinetic-energy cutoff     =      55.0000  Ry
-     charge density cutoff     =     550.0000  Ry
+     number of electrons       =        48.00
+     number of Kohn-Sham states=           80
+     kinetic-energy cutoff     =      65.0000  Ry
+     charge density cutoff     =     260.0000  Ry
      Exchange-correlation= PBESOL
                            (   1   4  10   8   0   0   0)
+     Noncollinear calculation with spin-orbit
+
      Hubbard projectors: ortho-atomic
      Hubbard parameters of DFT+U (Dudarev formulation) in eV:
-     U(Ni1-3d) =  4.6000
-     U(Ni2-3d) =  4.6000
+     U(Ni1-3d) =  5.0000
+     U(Ni2-3d) =  5.0000
+     U(O-2p) =  6.0000
 
-     Internal variables: lda_plus_u =T, lda_plus_u_kind = 0
+     Internal variables: lda_plus_u = T, lda_plus_u_kind = 0
 
-     Internal variables: orbital_resolved =F, hub_pot_fix =F, apply_U = F
-
-     celldm(1)=   7.837000  celldm(2)=   0.000000  celldm(3)=   0.000000
-     celldm(4)=   0.000000  celldm(5)=   0.000000  celldm(6)=   0.000000
+     celldm(1)=   9.711000  celldm(2)=   0.000000  celldm(3)=   0.000000
+     celldm(4)=   0.833300  celldm(5)=   0.000000  celldm(6)=   0.000000
 
      crystal axes: (cart. coord. in units of alat)
-               a(1) = (  -0.500000   0.000000   0.500000 )  
-               a(2) = (   0.000000   0.500000   0.500000 )  
-               a(3) = (  -0.500000   0.500000   0.000000 )  
+               a(1) = (   0.288704  -0.166683   0.942797 )  
+               a(2) = (   0.000000   0.333367   0.942797 )  
+               a(3) = (  -0.288704  -0.166683   0.942797 )  
 
      reciprocal axes: (cart. coord. in units 2 pi/alat)
-               b(1) = ( -1.000000 -1.000000  1.000000 )  
-               b(2) = (  1.000000  1.000000  1.000000 )  
-               b(3) = ( -1.000000  1.000000 -1.000000 )  
+               b(1) = (  1.731878 -0.999900  0.353558 )  
+               b(2) = (  0.000000  1.999800  0.353558 )  
+               b(3) = ( -1.731878 -0.999900  0.353558 )  
 
 
      PseudoPot. # 1 for Ni read from file:
-     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/../../pot/Ni.pbesol-n-rrkjus_psl.0.1.UPF
-     MD5 check sum: 8a65ecc087b22b902f7e15bb4f925df7
-     Pseudo is Ultrasoft + core correction, Zval = 10.0
-     Generated using "atomic" code by A. Dal Corso  v.5.0.2 svn rev. 9415
-     Using radial grid of 1195 points,  6 beta functions with: 
+     /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/../../pot/Ni.upf
+     MD5 check sum: 5455a6682c97bdfa0a87afd35ef7c071
+     Pseudo is Norm-conserving + core correction, Zval = 18.0
+     Generated using ONCVPSP code by D. R. Hamann
+     Using radial grid of 1356 points, 10 beta functions with: 
                 l(1) =   0
                 l(2) =   0
                 l(3) =   1
                 l(4) =   1
-                l(5) =   2
-                l(6) =   2
-     Q(r) pseudized with 0 coefficients 
-
+                l(5) =   1
+                l(6) =   1
+                l(7) =   2
+                l(8) =   2
+                l(9) =   2
+               l(10) =   2
 
      PseudoPot. # 2 for Ni read from file:
-     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/../../pot/Ni.pbesol-n-rrkjus_psl.0.1.UPF
-     MD5 check sum: 8a65ecc087b22b902f7e15bb4f925df7
-     Pseudo is Ultrasoft + core correction, Zval = 10.0
-     Generated using "atomic" code by A. Dal Corso  v.5.0.2 svn rev. 9415
-     Using radial grid of 1195 points,  6 beta functions with: 
+     /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/../../pot/Ni.upf
+     MD5 check sum: 5455a6682c97bdfa0a87afd35ef7c071
+     Pseudo is Norm-conserving + core correction, Zval = 18.0
+     Generated using ONCVPSP code by D. R. Hamann
+     Using radial grid of 1356 points, 10 beta functions with: 
                 l(1) =   0
                 l(2) =   0
                 l(3) =   1
                 l(4) =   1
-                l(5) =   2
-                l(6) =   2
-     Q(r) pseudized with 0 coefficients 
-
+                l(5) =   1
+                l(6) =   1
+                l(7) =   2
+                l(8) =   2
+                l(9) =   2
+               l(10) =   2
 
      PseudoPot. # 3 for O  read from file:
-     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/../../pot/O.pbesol-n-rrkjus_psl.1.0.0.UPF
-     MD5 check sum: 69b2cf9905362d8720b1d83b4ba3171b
-     Pseudo is Ultrasoft + core correction, Zval =  6.0
-     Generated using &quot;atomic&quot; code by A. Dal Corso  v.6.3MaX
-     Using radial grid of 1095 points,  4 beta functions with: 
+     /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/../../pot/O.upf
+     MD5 check sum: a1969bbd51a79f57ce766e937222aee4
+     Pseudo is Norm-conserving + core correction, Zval =  6.0
+     Generated using ONCVPSP code by D. R. Hamann
+     Using radial grid of  936 points,  8 beta functions with: 
                 l(1) =   0
                 l(2) =   0
                 l(3) =   1
                 l(4) =   1
-     Q(r) pseudized with 0 coefficients 
-
+                l(5) =   1
+                l(6) =   1
+                l(7) =   2
+                l(8) =   2
 
      atomic species   valence    mass     pseudopotential
-     Ni1              10.00    58.69340     Ni( 1.00)
-     Ni2              10.00    58.69340     Ni( 1.00)
+     Ni1              18.00    58.69340     Ni( 1.00)
+     Ni2              18.00    58.69340     Ni( 1.00)
      O                 6.00    15.99900     O ( 1.00)
 
-     Starting magnetic structure 
-     atomic species   magnetization
-     Ni1             0.500
-     Ni2            -0.500
-     O               0.000
-
-     48 Sym. Ops., with inversion, found
+     12 Sym. Ops., with inversion, found
 
 
 
@@ -140,243 +150,191 @@
 
      site n.     atom                  positions (alat units)
          1        Ni1    tau(   1) = (   0.0000000   0.0000000   0.0000000  )
-         2        Ni2    tau(   2) = (   0.5000000   0.5000000   0.5000000  )
-         3        O      tau(   3) = (   0.2500000   0.2500000   0.2500000  )
-         4        O      tau(   4) = (   0.7500000   0.7500000   0.7500000  )
+         2        Ni2    tau(   2) = (   0.0000000   0.6667333   0.4713986  )
+         3        O      tau(   3) = (   0.2887040  -0.1666833   0.2356993  )
+         4        O      tau(   4) = (  -0.2887040   0.1666833  -0.2356993  )
 
-     number of k points=    72 (tetrahedron method)
-                       cart. coord. in units 2pi/alat
-        k(    1) = (   0.0000000   0.0000000   0.0000000), wk =   0.0005787
-        k(    2) = (  -0.0833333   0.0833333  -0.0833333), wk =   0.0046296
-        k(    3) = (  -0.1666667   0.1666667  -0.1666667), wk =   0.0046296
-        k(    4) = (  -0.2500000   0.2500000  -0.2500000), wk =   0.0046296
-        k(    5) = (  -0.3333333   0.3333333  -0.3333333), wk =   0.0046296
-        k(    6) = (  -0.4166667   0.4166667  -0.4166667), wk =   0.0046296
-        k(    7) = (   0.5000000  -0.5000000   0.5000000), wk =   0.0023148
-        k(    8) = (   0.0000000   0.1666667   0.0000000), wk =   0.0034722
-        k(    9) = (  -0.0833333   0.2500000  -0.0833333), wk =   0.0138889
-        k(   10) = (  -0.1666667   0.3333333  -0.1666667), wk =   0.0138889
-        k(   11) = (  -0.2500000   0.4166667  -0.2500000), wk =   0.0138889
-        k(   12) = (  -0.3333333   0.5000000  -0.3333333), wk =   0.0138889
-        k(   13) = (   0.5833333  -0.4166667   0.5833333), wk =   0.0138889
-        k(   14) = (   0.5000000  -0.3333333   0.5000000), wk =   0.0138889
-        k(   15) = (   0.4166667  -0.2500000   0.4166667), wk =   0.0138889
-        k(   16) = (   0.3333333  -0.1666667   0.3333333), wk =   0.0138889
-        k(   17) = (   0.2500000  -0.0833333   0.2500000), wk =   0.0138889
-        k(   18) = (   0.1666667  -0.0000000   0.1666667), wk =   0.0069444
-        k(   19) = (   0.0000000   0.3333333   0.0000000), wk =   0.0034722
-        k(   20) = (  -0.0833333   0.4166667  -0.0833333), wk =   0.0138889
-        k(   21) = (  -0.1666667   0.5000000  -0.1666667), wk =   0.0138889
-        k(   22) = (  -0.2500000   0.5833333  -0.2500000), wk =   0.0138889
-        k(   23) = (   0.6666667  -0.3333333   0.6666667), wk =   0.0138889
-        k(   24) = (   0.5833333  -0.2500000   0.5833333), wk =   0.0138889
-        k(   25) = (   0.5000000  -0.1666667   0.5000000), wk =   0.0138889
-        k(   26) = (   0.4166667  -0.0833333   0.4166667), wk =   0.0138889
-        k(   27) = (   0.3333333   0.0000000   0.3333333), wk =   0.0069444
-        k(   28) = (   0.0000000   0.5000000   0.0000000), wk =   0.0034722
-        k(   29) = (  -0.0833333   0.5833333  -0.0833333), wk =   0.0138889
-        k(   30) = (  -0.1666667   0.6666667  -0.1666667), wk =   0.0138889
-        k(   31) = (   0.7500000  -0.2500000   0.7500000), wk =   0.0138889
-        k(   32) = (   0.6666667  -0.1666667   0.6666667), wk =   0.0138889
-        k(   33) = (   0.5833333  -0.0833333   0.5833333), wk =   0.0138889
-        k(   34) = (   0.5000000   0.0000000   0.5000000), wk =   0.0069444
-        k(   35) = (   0.0000000   0.6666667   0.0000000), wk =   0.0034722
-        k(   36) = (  -0.0833333   0.7500000  -0.0833333), wk =   0.0138889
-        k(   37) = (   0.8333333  -0.1666667   0.8333333), wk =   0.0138889
-        k(   38) = (   0.7500000  -0.0833333   0.7500000), wk =   0.0138889
-        k(   39) = (   0.6666667   0.0000000   0.6666667), wk =   0.0069444
-        k(   40) = (   0.0000000   0.8333333   0.0000000), wk =   0.0034722
-        k(   41) = (   0.9166667  -0.0833333   0.9166667), wk =   0.0138889
-        k(   42) = (   0.8333333   0.0000000   0.8333333), wk =   0.0069444
-        k(   43) = (   0.0000000  -1.0000000   0.0000000), wk =   0.0017361
-        k(   44) = (  -0.1666667   0.3333333   0.0000000), wk =   0.0138889
-        k(   45) = (  -0.2500000   0.4166667  -0.0833333), wk =   0.0277778
-        k(   46) = (  -0.3333333   0.5000000  -0.1666667), wk =   0.0277778
-        k(   47) = (   0.5833333  -0.4166667   0.7500000), wk =   0.0277778
-        k(   48) = (   0.5000000  -0.3333333   0.6666667), wk =   0.0138889
-        k(   49) = (  -0.1666667   0.5000000   0.0000000), wk =   0.0138889
-        k(   50) = (  -0.2500000   0.5833333  -0.0833333), wk =   0.0277778
-        k(   51) = (   0.6666667  -0.3333333   0.8333333), wk =   0.0277778
-        k(   52) = (   0.5833333  -0.2500000   0.7500000), wk =   0.0277778
-        k(   53) = (   0.5000000  -0.1666667   0.6666667), wk =   0.0277778
-        k(   54) = (   0.4166667  -0.0833333   0.5833333), wk =   0.0277778
-        k(   55) = (   0.3333333   0.0000000   0.5000000), wk =   0.0138889
-        k(   56) = (  -0.1666667   0.6666667  -0.0000000), wk =   0.0138889
-        k(   57) = (   0.7500000  -0.2500000   0.9166667), wk =   0.0277778
-        k(   58) = (   0.6666667  -0.1666667   0.8333333), wk =   0.0277778
-        k(   59) = (   0.5833333  -0.0833333   0.7500000), wk =   0.0277778
-        k(   60) = (   0.5000000   0.0000000   0.6666667), wk =   0.0138889
-        k(   61) = (   0.8333333  -0.1666667   1.0000000), wk =   0.0138889
-        k(   62) = (   0.7500000  -0.0833333   0.9166667), wk =   0.0277778
-        k(   63) = (   0.6666667   0.0000000   0.8333333), wk =   0.0138889
-        k(   64) = (  -0.1666667  -1.0000000   0.0000000), wk =   0.0069444
-        k(   65) = (   0.6666667  -0.3333333   1.0000000), wk =   0.0138889
-        k(   66) = (   0.5833333  -0.2500000   0.9166667), wk =   0.0277778
-        k(   67) = (   0.5000000  -0.1666667   0.8333333), wk =   0.0138889
-        k(   68) = (   0.6666667  -0.1666667   1.0000000), wk =   0.0138889
-        k(   69) = (   0.5833333  -0.0833333   0.9166667), wk =   0.0277778
-        k(   70) = (   0.5000000   0.0000000   0.8333333), wk =   0.0138889
-        k(   71) = (  -0.3333333  -1.0000000   0.0000000), wk =   0.0069444
-        k(   72) = (  -0.5000000  -1.0000000   0.0000000), wk =   0.0034722
+     number of k points=   189 (tetrahedron method)
 
-     Dense  grid:    26229 G-vectors     FFT dimensions: (  45,  45,  45)
+     Number of k-points >= 100: set verbosity='high' to print them.
 
-     Smooth grid:     6615 G-vectors     FFT dimensions: (  27,  27,  27)
+     Dense  grid:    17603 G-vectors     FFT dimensions: (  50,  50,  50)
 
-     Estimated max dynamical RAM per process >      24.03 MB
+     Estimated max dynamical RAM per process >      20.67 MB
 
-     Estimated total dynamical RAM >     120.17 MB
+     Estimated total dynamical RAM >     578.64 MB
+
+     Check: negative core charge=   -0.000018
      Generating pointlists ...
-     new r_m :   0.1786 (alat units)  1.3998 (a.u.) for type    1
-     new r_m :   0.1786 (alat units)  1.3998 (a.u.) for type    2
-     new r_m :   0.1786 (alat units)  1.3998 (a.u.) for type    3
+     new r_m :   0.1684 (alat units)  1.6355 (a.u.) for type    1
+     new r_m :   0.1684 (alat units)  1.6355 (a.u.) for type    2
+     new r_m :   0.1684 (alat units)  1.6355 (a.u.) for type    3
 
      The potential is recalculated from file :
-     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/charge-density
+     /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/out/NiO.save/charge-density
 
 
      STARTING HUBBARD OCCUPATIONS:
 
-     =================== HUBBARD OCCUPATIONS ===================
+     ================= HUBBARD OCCUPATIONS ================
      ------------------------ ATOM    1 ------------------------
-     Tr[ns(  1)] (up, down, total) =   4.60810  4.04456  8.65266
-     Atomic magnetic moment for atom   1 =   0.56354
-     SPIN  1
+     Tr[ns(  1)] (up, down, total) =   4.98405  3.24215  8.22620
      eigenvalues:
-       0.888  0.888  0.888  0.972  0.972
+       0.124  0.124  0.995  0.995  0.997  0.997  0.997  0.999  0.999  0.999
      eigenvectors (columns):
-      -0.000  0.000 -0.000 -0.628  0.778
-      -0.270 -0.301 -0.915 -0.000 -0.000
-      -0.634 -0.660  0.404 -0.000 -0.000
-       0.000 -0.000  0.000 -0.778 -0.628
-       0.725 -0.688  0.012  0.000  0.000
-     occupation matrix ns (before diag.):
-       0.972 -0.000 -0.000 -0.000  0.000
-      -0.000  0.888 -0.000  0.000  0.000
-      -0.000 -0.000  0.888  0.000  0.000
-      -0.000  0.000  0.000  0.972 -0.000
-       0.000  0.000  0.000 -0.000  0.888
-     SPIN  2
-     eigenvalues:
-       0.709  0.709  0.709  0.959  0.959
-     eigenvectors (columns):
-      -0.000 -0.000  0.000 -0.596  0.803
-      -0.268 -0.963  0.039 -0.000 -0.000
-      -0.587  0.131 -0.799 -0.000 -0.000
-       0.000  0.000 -0.000 -0.803 -0.596
-       0.764 -0.237 -0.600  0.000  0.000
-     occupation matrix ns (before diag.):
-       0.959 -0.000 -0.000 -0.000  0.000
-      -0.000  0.709 -0.000  0.000  0.000
-      -0.000 -0.000  0.709  0.000  0.000
-      -0.000  0.000  0.000  0.959 -0.000
-       0.000  0.000  0.000 -0.000  0.709
+       0.041  0.000  0.000 -0.000 -0.068  0.000 -0.000  0.000  0.997 -0.000
+      -0.000  0.000 -0.000 -0.000  0.000 -0.000 -0.000  0.001 -0.000 -0.000
+      -0.000  0.017  0.563 -0.585  0.000  0.007 -0.039 -0.427 -0.000 -0.395
+       0.000 -0.024  0.424 -0.393  0.000  0.078 -0.035  0.560  0.000  0.586
+       0.000 -0.000 -0.000 -0.000  0.000 -0.000 -0.000 -0.001  0.000  0.000
+       0.000  0.000  0.000  0.000  0.000 -0.001 -0.000  0.000  0.000 -0.000
+       0.561  0.592 -0.000  0.029 -0.427  0.000 -0.385 -0.000 -0.052  0.021
+      -0.000  0.000 -0.000 -0.000  0.000 -0.000 -0.000  0.000 -0.000  0.000
+      -0.000  0.000  0.000  0.000 -0.000  0.000  0.000 -0.000  0.000 -0.000
+       0.429  0.386  0.000 -0.043  0.561 -0.000  0.591  0.000  0.020  0.022
+     occupations, | n_(i1, i2)^(sigma1, sigma2) |:
+       0.997  0.000  0.000  0.000  0.000  0.000  0.020  0.020  0.015  0.015
+       0.000  0.996  0.000  0.000  0.001  0.000  0.009  0.009  0.006  0.006
+       0.000  0.000  0.996  0.001  0.000  0.000  0.009  0.009  0.006  0.006
+       0.000  0.000  0.001  0.997  0.000  0.000  0.012  0.012  0.008  0.008
+       0.000  0.001  0.000  0.000  0.997  0.000  0.012  0.012  0.008  0.008
+       0.000  0.000  0.000  0.000  0.000  0.997  0.000  0.000  0.000  0.000
+       0.020  0.009  0.009  0.012  0.012  0.000  0.416  0.031  0.011  0.410
+       0.020  0.009  0.009  0.012  0.012  0.000  0.031  0.416  0.410  0.011
+       0.015  0.006  0.006  0.008  0.008  0.000  0.011  0.410  0.706  0.031
+       0.015  0.006  0.006  0.008  0.008  0.000  0.410  0.011  0.031  0.706
+     Atomic magnetic moment mx, my, mz =     0.000000    0.000000    1.741896
      ------------------------ ATOM    2 ------------------------
-     Tr[ns(  2)] (up, down, total) =   4.04456  4.60810  8.65265
-     Atomic magnetic moment for atom   2 =  -0.56354
-     SPIN  1
+     Tr[ns(  2)] (up, down, total) =   3.24215  4.98405  8.22620
      eigenvalues:
-       0.709  0.709  0.709  0.959  0.959
+       0.124  0.124  0.995  0.995  0.997  0.997  0.997  0.999  0.999  0.999
      eigenvectors (columns):
-      -0.000  0.000 -0.000  0.093 -0.996
-      -0.254 -0.606 -0.754  0.000  0.000
-      -0.577 -0.531  0.621  0.000  0.000
-       0.000  0.000  0.000  0.996  0.093
-       0.776 -0.593  0.215 -0.000 -0.000
-     occupation matrix ns (before diag.):
-       0.959 -0.000 -0.000 -0.000  0.000
-      -0.000  0.709 -0.000  0.000  0.000
-      -0.000 -0.000  0.709  0.000  0.000
-      -0.000  0.000  0.000  0.959 -0.000
-       0.000  0.000  0.000 -0.000  0.709
-     SPIN  2
+      -0.000 -0.000 -0.075 -0.000  0.000  0.994 -0.000  0.082 -0.000  0.000
+       0.001 -0.000  0.000 -0.000 -0.002 -0.000 -0.000  0.000 -0.000 -0.000
+      -0.561 -0.592  0.000 -0.029 -0.427 -0.000 -0.385  0.000  0.052 -0.021
+      -0.429 -0.386 -0.000  0.043  0.561  0.000  0.591 -0.000 -0.020 -0.022
+       0.001 -0.000 -0.000  0.000  0.002  0.000  0.000  0.000  0.000  0.000
+      -0.000  0.000 -0.000 -0.000  0.000 -0.000  0.000  0.000 -0.001 -0.000
+       0.000  0.017 -0.563 -0.585 -0.000 -0.007  0.039 -0.427  0.000 -0.395
+      -0.000 -0.000  0.000 -0.000 -0.000  0.000  0.000  0.000 -0.000 -0.000
+      -0.000  0.000  0.000 -0.000 -0.000  0.000  0.000 -0.000  0.000  0.000
+      -0.000 -0.024 -0.424 -0.393 -0.000 -0.078  0.035  0.560 -0.000  0.586
+     occupations, | n_(i1, i2)^(sigma1, sigma2) |:
+       0.997  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+       0.000  0.416  0.031  0.011  0.410  0.020  0.009  0.009  0.012  0.012
+       0.000  0.031  0.416  0.410  0.011  0.020  0.009  0.009  0.012  0.012
+       0.000  0.011  0.410  0.706  0.031  0.015  0.006  0.006  0.008  0.008
+       0.000  0.410  0.011  0.031  0.706  0.015  0.006  0.006  0.008  0.008
+       0.000  0.020  0.020  0.015  0.015  0.997  0.000  0.000  0.000  0.000
+       0.000  0.009  0.009  0.006  0.006  0.000  0.996  0.000  0.000  0.001
+       0.000  0.009  0.009  0.006  0.006  0.000  0.000  0.996  0.001  0.000
+       0.000  0.012  0.012  0.008  0.008  0.000  0.000  0.001  0.997  0.000
+       0.000  0.012  0.012  0.008  0.008  0.000  0.001  0.000  0.000  0.997
+     Atomic magnetic moment mx, my, mz =    -0.000000   -0.000000   -1.741896
+     ------------------------ ATOM    3 ------------------------
+     Tr[ns(  3)] (up, down, total) =   2.67373  2.67373  5.34747
      eigenvalues:
-       0.888  0.888  0.888  0.972  0.972
+       0.889  0.889  0.891  0.891  0.893  0.893
      eigenvectors (columns):
-      -0.000 -0.000  0.000 -0.330  0.944
-      -0.295 -0.932  0.209 -0.000 -0.000
-      -0.597  0.009 -0.802 -0.000 -0.000
-       0.000  0.000 -0.000 -0.944 -0.330
-       0.746 -0.361 -0.559  0.000  0.000
-     occupation matrix ns (before diag.):
-       0.972 -0.000 -0.000 -0.000  0.000
-      -0.000  0.888 -0.000  0.000  0.000
-      -0.000 -0.000  0.888  0.000  0.000
-      -0.000  0.000  0.000  0.972 -0.000
-       0.000  0.000  0.000 -0.000  0.888
+       0.000 -0.000  0.000  0.000 -0.000  0.000
+      -0.683 -0.000 -0.706  0.036 -0.179 -0.000
+       0.041  0.000 -0.000  0.000  0.011  0.000
+      -0.254 -0.000 -0.000 -0.000  0.965  0.000
+      -0.000  0.000  0.000 -0.000 -0.000  0.000
+       0.000 -0.684 -0.036 -0.706 -0.000  0.180
+     occupations, | n_(i1, i2)^(sigma1, sigma2) |:
+       0.893  0.000  0.000  0.000  0.001  0.001
+       0.000  0.891  0.001  0.001  0.000  0.000
+       0.000  0.001  0.891  0.001  0.000  0.000
+       0.000  0.001  0.001  0.893  0.000  0.000
+       0.001  0.000  0.000  0.000  0.891  0.001
+       0.001  0.000  0.000  0.000  0.001  0.891
+     Atomic magnetic moment mx, my, mz =     0.000000   -0.000000   -0.000000
+     ------------------------ ATOM    4 ------------------------
+     Tr[ns(  4)] (up, down, total) =   2.67373  2.67373  5.34747
+     eigenvalues:
+       0.889  0.889  0.891  0.891  0.893  0.893
+     eigenvectors (columns):
+       0.000 -0.000  0.000  0.000 -0.000  0.000
+      -0.684 -0.000 -0.706  0.036 -0.180 -0.000
+       0.020  0.000 -0.000  0.000  0.003  0.000
+      -0.254 -0.000 -0.000 -0.000  0.967  0.000
+      -0.000  0.000  0.000 -0.000 -0.000  0.000
+       0.000 -0.684 -0.036 -0.706 -0.000  0.180
+     occupations, | n_(i1, i2)^(sigma1, sigma2) |:
+       0.893  0.000  0.000  0.000  0.001  0.001
+       0.000  0.891  0.001  0.001  0.000  0.000
+       0.000  0.001  0.891  0.001  0.000  0.000
+       0.000  0.001  0.001  0.893  0.000  0.000
+       0.001  0.000  0.000  0.000  0.891  0.001
+       0.001  0.000  0.000  0.000  0.001  0.891
+     Atomic magnetic moment mx, my, mz =     0.000000   -0.000000   -0.000000
 
-     Number of occupied Hubbard levels =   17.3053
+     Number of occupied Hubbard levels =   27.1473
 
      Atomic wfc used for Hubbard projectors are orthogonalized
 
-     Starting wfcs are   26 randomized atomic wfcs +    6 random wfcs
+     Starting wfcs are   56 randomized atomic wfcs +   24 random wfcs
 
      Band Structure Calculation
      Davidson diagonalization with overlap
-     c_bands:  1 eigenvalues not converged
-     c_bands:  1 eigenvalues not converged
 
-     ethr =  3.13E-12,  avg # of iterations = 64.5
+     ethr =  2.08E-12,  avg # of iterations = 36.7
 
-     total cpu time spent up to now is       30.7 secs
+     total cpu time spent up to now is      157.1 secs
 
      End of band structure calculation
 
      Number of k-points >= 100: set verbosity='high' to print the bands.
 
-     the spin up/dw Fermi energies are    29.5084   29.5084 ev
-     (compare with:    31.6945   31.6945 eV, computed in scf)
+     the Fermi energy is    11.4934 ev
+     (compare with:    11.4938 eV, computed in scf)
 
-     Writing all to output data dir /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/ :
+     Writing all to output data dir /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/out/NiO.save/ :
      XML data file, pseudopotentials, collected wavefunctions
-
-     init_run     :      0.28s CPU      0.29s WALL (       1 calls)
-     electrons    :     29.68s CPU     30.23s WALL (       1 calls)
+ 
+     init_run     :      0.77s CPU      1.32s WALL (       1 calls)
+     electrons    :    144.71s CPU    147.00s WALL (       1 calls)
 
      Called by init_run:
-     wfcinit      :      0.10s CPU      0.10s WALL (       1 calls)
-     potinit      :      0.01s CPU      0.01s WALL (       1 calls)
-     hinit0       :      0.14s CPU      0.14s WALL (       1 calls)
+     wfcinit      :      0.63s CPU      1.16s WALL (       1 calls)
+     potinit      :      0.04s CPU      0.05s WALL (       1 calls)
+     hinit0       :      0.08s CPU      0.09s WALL (       1 calls)
 
      Called by electrons:
-     c_bands      :     29.17s CPU     29.72s WALL (       1 calls)
-     v_of_rho     :      0.01s CPU      0.01s WALL (       1 calls)
-     newd         :      0.01s CPU      0.02s WALL (       1 calls)
+     c_bands      :    144.17s CPU    146.46s WALL (       1 calls)
+     v_of_rho     :      0.03s CPU      0.04s WALL (       1 calls)
 
      Called by c_bands:
-     init_us_2    :      0.01s CPU      0.01s WALL (     288 calls)
-     cegterg      :     28.64s CPU     29.17s WALL (     526 calls)
+     init_us_2    :      0.05s CPU      0.05s WALL (      96 calls)
+     cegterg      :    127.08s CPU    128.42s WALL (     112 calls)
 
      Called by *egterg:
-     cdiaghg      :      9.31s CPU      9.36s WALL (    9430 calls)
-     h_psi        :     16.56s CPU     16.99s WALL (    9956 calls)
-     s_psi        :      0.38s CPU      0.39s WALL (   10244 calls)
-     g_psi        :      0.04s CPU      0.05s WALL (    9286 calls)
+     cdiaghg      :     15.92s CPU     15.94s WALL (    1911 calls)
+     h_psi        :    101.60s CPU    102.95s WALL (    2023 calls)
+     g_psi        :      0.35s CPU      0.35s WALL (    1863 calls)
 
      Called by h_psi:
-     h_psi:calbec :      0.59s CPU      0.61s WALL (    9956 calls)
-     vloc_psi     :     14.95s CPU     15.33s WALL (    9956 calls)
-                                        0.00s GPU  (    9956 calls)
-     add_vuspsi   :      0.39s CPU      0.39s WALL (    9956 calls)
-     vhpsi        :      0.61s CPU      0.63s WALL (    9956 calls)
+     h_psi:calbec :      2.70s CPU      2.72s WALL (    2023 calls)
+     vloc_psi     :     91.40s CPU     92.70s WALL (    2023 calls)
+     add_vuspsi   :      4.31s CPU      4.33s WALL (    2023 calls)
+     vhpsi        :      2.92s CPU      2.94s WALL (    2023 calls)
 
      General routines
-     calbec       :      0.95s CPU      0.97s WALL (   20056 calls)
+     calbec       :      3.02s CPU      3.05s WALL (    2071 calls)
      fft          :      0.01s CPU      0.01s WALL (      23 calls)
-     ffts         :      0.00s CPU      0.00s WALL (       2 calls)
-     fftw         :     14.25s CPU     14.55s WALL (  350704 calls)
-     interpolate  :      0.00s CPU      0.00s WALL (       2 calls)
-     davcio       :      0.00s CPU      0.01s WALL (     720 calls)
-
+     fftw         :     71.25s CPU     72.30s WALL (  260740 calls)
+     davcio       :      0.05s CPU      1.24s WALL (     192 calls)
+ 
      Parallel routines
 
      Hubbard U routines
-     vhpsi        :      0.61s CPU      0.63s WALL (    9956 calls)
+     vhpsi        :      2.92s CPU      2.94s WALL (    2023 calls)
+ 
+     PWSCF        :   2m34.59s CPU   2m39.13s WALL
 
-     PWSCF        :     30.17s CPU     30.76s WALL
-
-
-   This run was terminated on:  20:36:33  25Feb2026            
+ 
+   This run was terminated on:  19:11:25   1Nov2026            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

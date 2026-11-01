@@ -1,5 +1,5 @@
 
-     Program DOS v.7.5 starts on 25Feb2026 at 20:36:33 
+     Program DOS v.7.4.1 starts on  1Nov2026 at 19:11:27 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -10,18 +10,19 @@
      in publications or presentations arising from this work. More details at
      http://www.quantum-espresso.org/quote
 
-     Parallel version (MPI), running on     5 processors
+     Parallel version (MPI & OpenMP), running on      28 processor cores
+     Number of MPI processes:                28
+     Threads/MPI process:                     1
 
      MPI processes distributed on     1 nodes
-     R & G space division:  proc/nbgrp/npool/nimage =       5
-     0 MiB available memory on the printing compute node when the environment starts
-
+     K-points division:     npool     =       4
+     R & G space division:  proc/nbgrp/npool/nimage =       7
+     56570 MiB available memory on the printing compute node when the environment starts
+ 
 
      Reading xml data from directory:
 
-     /Users/kirill/Documents/dft/volume/NiO_dos_dft_U/out/NiO.save/
-     file Ni.pbesol-n-rrkjus_psl.0.1.UPF: wavefunction(s)  3D renormalized
-     file Ni.pbesol-n-rrkjus_psl.0.1.UPF: wavefunction(s)  3D renormalized
+     /home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/out/NiO.save/
 
      IMPORTANT: XC functional enforced from input :
      Exchange-correlation= PBESOL
@@ -29,24 +30,26 @@
      Any further DFT definition will be discarded
      Please, verify this is what you really want
 
-
+ 
      Parallelization info
      --------------------
      sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
-     Min         231      92     30                 5243     1322     248
-     Max         232      93     31                 5247     1324     251
-     Sum        1159     463    151                26229     6615    1243
-
+     Min         153     153     51                 2514     2514     480
+     Max         154     154     52                 2516     2516     482
+     Sum        1077    1077    359                17603    17603    3363
+ 
      Using Slab Decomposition
+ 
 
+     Check: negative core charge=   -0.000018
 
      Tetrahedra used
 
+ 
+     DOS          :      6.79s CPU      6.93s WALL
 
-     DOS          :     15.56s CPU     15.59s WALL
-
-
-   This run was terminated on:  20:36:49  25Feb2026            
+ 
+   This run was terminated on:  19:11:34   1Nov2026            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

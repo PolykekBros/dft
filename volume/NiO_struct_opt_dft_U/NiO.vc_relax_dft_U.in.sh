@@ -1,11 +1,26 @@
 #!/bin/bash
 
+#SBATCH --job-name=NiO_U_scan
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=28
+#SBATCH --cpus-per-task=1
+#SBATCH --output=NiO_scan.out
+
+## --- Environment Setup ---
+module purge
+module load mpi/impi/2021.4.0
+module load espresso/7.4.1
+module load post/gnuplot
 set -xe
+
+unset I_MPI_PMI_LIBRARY
+export I_MPI_FABRICS=shm:ofi
 
 PSEUDO_DIR="$(pwd)/../../pot"
 OUTPUT_DIR="$(pwd)/out"
+QE_BIN=pw.x
 
-QE_DIR="$HOME/Desktop/src/q-e-qe-7.5/bin"
+mkdir -p "$OUTPUT_DIR"
 
 echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
@@ -27,19 +42,32 @@ run_vc_relax() {
     forc_conv_thr = 1e-4 
 /
 &SYSTEM
-    ibrav = 2
-    celldm(1) = 7.9
+    ibrav = 5
+    celldm(1) = 9.711
+    celldm(4) = 0.8333
     nat   = 4
     ntyp  = 3
-    nspin = 2
-    starting_magnetization(1) =  0.2
-    starting_magnetization(2) = -0.2
-    tot_magnetization = 0.0
-    ecutwfc = 55
-    ecutrho = 550
+    noncolin = .true.
+    lspinorb = .true.
+    starting_magnetization(1) = 0.5
+    starting_magnetization(2) = 0.5
+    angle1(1) = 0.0
+    angle1(2) = 180.0
+    angle2(1) = 0.0
+    angle2(2) = 0.0
+
+    ecutwfc = 65
+    ecutrho = 260
+    nbnd = 80
+
+    occupations = 'smearing'
+    smearing = 'cold'
+    degauss = 0.01
 /
 &ELECTRONS
-    mixing_beta = 0.2
+    mixing_beta = 0.1
+    electron_maxstep = 300
+    mixing_ndim = 14
     conv_thr    = 1d-9
 /
 &IONS
@@ -50,27 +78,28 @@ run_vc_relax() {
     cell_dynamics='bfgs'
 /
 ATOMIC_SPECIES
- Ni1  58.6934  Ni.pbesol-n-kjpaw_psl.0.1.UPF
- Ni2  58.6934  Ni.pbesol-n-kjpaw_psl.0.1.UPF
- O    15.999   O.pbesol-n-kjpaw_psl.1.0.0.UPF
+ Ni1  58.6934  Ni.upf
+ Ni2  58.6934  Ni.upf
+ O    15.999   O.upf
 
-ATOMIC_POSITIONS (alat)
-    Ni1  0.0  0.0  0.0 0 0 0
-    Ni2  0.5  0.5  0.5 0 0 0
-    O    0.25 0.25 0.25 0 0 0
-    O    0.75 0.75 0.75 0 0 0 
+ATOMIC_POSITIONS (crystal)
+    Ni1  0.0000000000   0.0000000000   0.0000000000
+    Ni2 -0.5000000000   1.5000000000  -0.5000000000
+    O    0.7500000000  -0.2500000000  -0.2500000000
+    O   -0.7500000000   0.2500000000   0.2500000000
 
-K_POINTS (automatic)
+K_POINTS automatic
 6 6 6 0 0 0
 
 HUBBARD (ortho-atomic)
-U Ni1-3d 7.6
-U Ni2-3d 7.6
+U Ni1-3d 5
+U Ni2-3d 5
+U O-2p 6
 EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
+    mpirun -np 28 "$QE_BIN" -nk 4 < $INPUT_FILE > $OUTPUT_FILE
 }
 
 run_vc_relax

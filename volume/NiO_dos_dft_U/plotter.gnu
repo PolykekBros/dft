@@ -1,11 +1,12 @@
-# Gnuplot script file for plotting data in file "si.dos.dat"
-# This file is called plot_dos.gnu
-set terminal pngcairo enhanced font 'Verdana,10'
-set output 'NiO_dos_dft_U.png'
-set grid
-set title "Density of states (DOS) of NiO crystal"
-set xlabel "Energy (eV)"
-set ylabel "DOS"
-set format y "%.4f"
-plot    "nio.dos_dft_U.dat" using 1:2 title 'DOS of spin-up' with line,\
-	"nio.dos_dft_U.dat" using 1:(-$3) title 'DOS of spin-down' with line
+    set terminal pngcairo enhanced font 'Verdana,10' size 800,600
+    set output 'NiO_pdos_mz.png'
+    set grid
+    set title "Projected Local Magnetization (m_z) of Ni 3d in NiO"
+    set xlabel "Energy (eV)"
+    set ylabel "PDOS (States / eV)"
+    set format y "%.2f"
+    
+    plot "NiO.pdos_atm#1(Ni1)_wfc#4(d_j2.5)" using 1:5 title 'Ni1 3d j=5/2 (m_z)' with line lw 2 lc rgb 'red', \
+         "NiO.pdos_atm#1(Ni1)_wfc#5(d_j1.5)" using 1:5 title 'Ni1 3d j=3/2 (m_z)' with line lw 2 lc rgb 'dark-red', \
+         "NiO.pdos_atm#2(Ni2)_wfc#4(d_j2.5)" using 1:5 title 'Ni2 3d j=5/2 (m_z)' with line lw 2 lc rgb 'blue', \
+         "NiO.pdos_atm#2(Ni2)_wfc#5(d_j1.5)" using 1:5 title 'Ni2 3d j=3/2 (m_z)' with line lw 2 lc rgb 'dark-blue'

@@ -1,0 +1,9 @@
+&PROJWFC
+    prefix  = 'NiO'
+    outdir  = '/home/iethseph2/kirkar/dft/volume/NiO_dos_dft_U/out'
+    ngauss  = 0
+    degauss = 0.01
+    DeltaE  = 0.05
+    Emin    = -10.0
+    Emax    = 20.0
+/
