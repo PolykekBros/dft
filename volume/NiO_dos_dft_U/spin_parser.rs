@@ -1,11 +1,7 @@
-#!/usr/bin/env -S cargo +nightly -Zscript
----
-[package]
-edition = "2024"
-[dependencies]
-anyhow = "1.0.104"
----
-use anyhow::Result;
+#!/bin/bash
+#![allow(unused)] /*
+exec cargo +nightly -Zscript "$0" "$@"
+*/
 use std::fs::File;
 use std::io::{self, BufRead, Write};
 
@@ -76,7 +72,7 @@ fn process_atom(atom_name: &str, file_j52: &str, file_j32: &str) -> io::Result<(
     Ok(())
 }
 
-fn main() -> Result<()> {
+fn main() {
     println!("Extracting exact Sz projections... don't mess up your filenames!");
 
     // Process Ni1
@@ -98,5 +94,4 @@ fn main() -> Result<()> {
     }
 
     println!("Finished! Plot column 4 of the new .dat files to see the true magnetic splitting.");
-    Ok(())
 }
