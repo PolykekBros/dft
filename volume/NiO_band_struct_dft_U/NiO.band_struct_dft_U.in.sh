@@ -20,6 +20,7 @@ PSEUDO_DIR="$(pwd)/../../pot"
 OUTPUT_DIR="$(pwd)/out"
 QE_BIN=pw.x
 BANDS_BIN=bands.x
+PROJWFC_BIN=projwfc.x
 
 echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
@@ -244,7 +245,7 @@ run_bands_pp() {
     local INPUT_FILE="NiO.bands_dft_U.pp.in"
     local OUTPUT_FILE="NiO.bands_dft_U.pp.out"
 
-    echo "Started nscf calculation"
+    echo "Started bands pp calculation"
     cat <<EOF >$INPUT_FILE
 &BANDS
 prefix  = 'NiO'
@@ -259,6 +260,25 @@ EOF
     mpirun -np 28 "$BANDS_BIN" -nk 4 < $INPUT_FILE > $OUTPUT_FILE
 }
 
+run_projwfc() {
+    local INPUT_FILE="NiO.projwfc_bands.in"
+    local OUTPUT_FILE="NiO.projwfc_bands.out"
+
+    echo "Started projwfc calculation"
+    cat <<EOF >$INPUT_FILE
+&PROJWFC
+prefix = 'NiO'
+outdir = '$OUTPUT_DIR'
+pseudo_dir = '$PSEUDO_DIR'
+lsym   = .false.
+/
+EOF
+
+    rm -f $OUTPUT_FILE
+    # Using nproc to calculate processes, similar to the fish script
+    mpirun -np 28 "$PROJWFC_BIN" -nk 4 < $INPUT_FILE > $OUTPUT_FILE
+}
+
 run_plotter() {
     local INPUT_FILE="plotter.gnu"
     FERMI_ENERGY=$(grep "the Fermi energy is" NiO.nscf_dft_U.out | awk '{print $5}')
@@ -269,24 +289,25 @@ run_plotter() {
     echo "Plotting band structure"
     cat <<EOF >$INPUT_FILE
     set terminal pngcairo enhanced font 'Verdana,12' size 800,600
-    set output 'NiO_bands_relativistic.png'
-    
-    set title "Relativistic Band Structure of NiO (DFT+U+SOC)"
+    set output 'NiO_fatbands.png'
+    set title "Orbital-Projected Fat Bands of NiO (DFT+U+SOC)"
     set ylabel "Energy - E_F (eV)"
-    set yrange [-8:8]  # Focus specifically on the Mott gap region
+    set yrange [-8:8]
     set xzeroaxis ls -1
     set grid y
     
+    # Standard Brillouin zone labels from your array
     set xtics ("L" ${X_COORDS[0]}, "{/Symbol G}" ${X_COORDS[1]}, "X" ${X_COORDS[2]}, "W" ${X_COORDS[3]}, "{/Symbol G}" ${X_COORDS[4]})
-    
-    # Add vertical dashed lines at the high-symmetry points for clarity
     set arrow from ${X_COORDS[1]}, graph 0 to ${X_COORDS[1]}, graph 1 nohead lt 0
     set arrow from ${X_COORDS[2]}, graph 0 to ${X_COORDS[2]}, graph 1 nohead lt 0
     set arrow from ${X_COORDS[3]}, graph 0 to ${X_COORDS[3]}, graph 1 nohead lt 0
     
-    # Plotting the pre-formatted GNU output from bands.x
-    plot 'NiO_bands.dat.gnu' using 1:(\$2 - ${FERMI_ENERGY}) with lines lw 1.5 lc rgb 'dark-blue' notitle
+    # Base bands in gray, orbital weights as dynamic circles
+    plot 'NiO_bands.dat.gnu' using 1:(\$2 - ${FERMI_ENERGY}) with lines lw 1.5 lc rgb 'gray' notitle, \
+         'fatbands.dat' using 1:(\$2 - ${FERMI_ENERGY}):(\$3 > 0.05 ? \$3 * 2.5 : 1/0) with points pt 7 lc rgb '#AA0000' ps variable title 'Ni 3d', \
+         'fatbands.dat' using 1:(\$2 - ${FERMI_ENERGY}):(\$4 > 0.05 ? \$4 * 2.5 : 1/0) with points pt 7 lc rgb '#0000AA' ps variable title 'O 2p'
 EOF
+
     gnuplot ${INPUT_FILE}
 }
 
@@ -294,4 +315,6 @@ run_scf
 run_nscf
 run_bands
 run_bands_pp
+run_projwfc
+./fatband_parser.rs
 run_plotter
