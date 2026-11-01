@@ -1,11 +1,24 @@
 #!/bin/bash
 
+#SBATCH --job-name=NiO_U_scan
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=28
+#SBATCH --cpus-per-task=1
+#SBATCH --output=NiO_scan.out
+
+## --- Environment Setup ---
+module purge
+module load mpi/impi/2021.4.0
+module load espresso/7.4.1
+module load post/gnuplot
 set -xe
+
+unset I_MPI_PMI_LIBRARY
+export I_MPI_FABRICS=shm:ofi
 
 PSEUDO_DIR="$(pwd)/../../pot"
 OUTPUT_DIR="$(pwd)/out"
-
-QE_DIR="$HOME/Desktop/src/q-e-qe-7.5/bin"
+QE_BIN=pw.x
 
 echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
@@ -27,18 +40,26 @@ run_vc_relax() {
     forc_conv_thr = 1e-4 
 /
 &SYSTEM
-    ibrav = 2
-    celldm(1) = 7.9
-    nat   = 2
-    ntyp  = 2
-    nspin = 1
-    ecutwfc = 55
-    ecutrho = 550
+    ibrav = 5
+    celldm(1) = 9.711
+    celldm(4) = 0.8333
+    nat   = 4
+    ntyp  = 3
+    nspin = 4
+    noncolin = .true.
+    lspinorb = .true.
+    angle1(1) = 0.0
+    angle1(2) = 180.0
+    angle2(1) = 0.0
+    angle2(2) = 0.0
+    ecutwfc = 65
+    ecutrho = 650
 /
 &ELECTRONS
-    mixing_beta = 0.3
+    mixing_beta = 0.1
     conv_thr    = 1d-9
-    electron_maxstep = 1000
+    mixing_ndim = 14
+    electron_maxstep = 300
 /
 &IONS
 /
@@ -46,12 +67,15 @@ run_vc_relax() {
     cell_dofree='ibrav'
 /
 ATOMIC_SPECIES
-Ni  58.6934  Ni.pbesol-n-rrkjus_psl.0.1.UPF
-O   15.999   O.pbesol-n-rrkjus_psl.1.0.0.UPF
+Ni1  58.6934  Ni.upf
+Ni2  58.6934  Ni.upf
+O   15.999   O.upf
 
-ATOMIC_POSITIONS (alat)
-Ni  0.00000000  0.00000000  0.00000000 0 0 0
-O   0.50000000  0.50000000  0.50000000 0 0 0
+ATOMIC_POSITIONS (crystal)
+    Ni1  0.0000000000   0.0000000000   0.0000000000
+    Ni2 -0.5000000000   1.5000000000  -0.5000000000
+    O    0.7500000000  -0.2500000000  -0.2500000000
+    O   -0.7500000000   0.2500000000   0.2500000000
 
 K_POINTS automatic
 4 4 4 0 0 0
@@ -59,7 +83,7 @@ EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
+    mpirun -np 28 "$QE_BIN" -nk 4 < $INPUT_FILE > $OUTPUT_FILE
 }
 
 run_vc_relax 

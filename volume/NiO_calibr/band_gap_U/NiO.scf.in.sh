@@ -1,11 +1,26 @@
 #!/bin/bash
 
+#SBATCH --job-name=NiO_U_scan
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=28
+#SBATCH --cpus-per-task=1
+#SBATCH --output=NiO_scan.out
+
+## --- Environment Setup ---
+module purge
+module load mpi/impi/2021.4.0
+module load espresso/7.4.1
+module load post/gnuplot
 set -xe
+
+unset I_MPI_PMI_LIBRARY
+export I_MPI_FABRICS=shm:ofi
 
 PSEUDO_DIR="$(pwd)/../../../pot"
 OUTPUT_DIR="$(pwd)/out"
+QE_BIN=pw.x
 
-QE_DIR="$HOME/Desktop/src/q-e-qe-7.5/bin"
+mkdir -p "$OUTPUT_DIR"
 
 echo "PSEUDO DIR: $PSEUDO_DIR"
 echo "OUTPUT_DIR: $OUTPUT_DIR"
@@ -32,9 +47,10 @@ run_pw() {
     celldm(4) = 0.8333
     nat   = 4
     ntyp  = 3
-    nspin = 4
     noncolin = .true.
     lspinorb = .true.
+    starting_magnetization(1) = 0.5
+    starting_magnetization(2) = 0.5
     angle1(1) = 0.0
     angle1(2) = 180.0
     angle2(1) = 0.0
@@ -45,7 +61,9 @@ run_pw() {
     nbnd = 80
 /
 &ELECTRONS
-    mixing_beta = 0.3
+    mixing_beta = 0.1
+    electron_maxstep = 300
+    mixing_ndim = 14
     conv_thr    = 1d-9
 /
 &IONS
@@ -68,18 +86,19 @@ K_POINTS automatic
 6 6 6 0 0 0
 
 HUBBARD (ortho-atomic)
-U Ni1-3d $u_val
-U Ni2-3d $u_val
+U Ni1-3d 5
+U Ni2-3d 5
+U O-2p $u_val
 EOF
 
     rm -f $OUTPUT_FILE
     # Using nproc to calculate processes, similar to the fish script
-    mpirun -np 5 "$QE_DIR/pw.x" -inp $INPUT_FILE > $OUTPUT_FILE
+    mpirun -np 28 "$QE_BIN" -nk 4 < $INPUT_FILE > $OUTPUT_FILE
 }
 
 > NiO_gap.data
 
-for u in $(seq 6.0 0.5 8.0); do
+for u in $(seq 3.0 0.5 8.0); do
     echo "Processing Hubbard U = $u"
     
     run_pw "$u"

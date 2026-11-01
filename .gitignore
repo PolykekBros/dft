@@ -1,1 +1,4 @@
 out/
+CRASH
+.DS_Store
+*.out
